@@ -1,0 +1,1 @@
+this is a test file with some lowercase strings in it

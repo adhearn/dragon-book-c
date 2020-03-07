@@ -67,16 +67,18 @@ void term() {
 void r() {
     // We could condense these into a single case by storing off the current
     // lookahead so we know what to print. This is nice and explicit, though.
-    char op = lookahead;
-    switch (lookahead) {
-    case '+':
-    case '-':
-        advanceLookahead();
-        term();
-        printf("%c", op);
-        r();
-        break;
+    while (1) {
+        char op = lookahead;
+        if (op == '+' || op == '-') {
+            advanceLookahead();
+            term();
+            printf("%c", op);
+        }
+        else {
+            break;
+        }
     }
+
     // Could be the empty string, return without signaling an error and let the
     // next step of the parser decide.
 }
